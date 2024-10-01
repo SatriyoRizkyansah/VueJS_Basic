@@ -4,19 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
-    <div id="app">{{ message }}</div>
+    <div id="app">
+      <button @click="kurang()">-</button>
+      {{ count }}
+      <button @click="tambah()">+</button>
+    </div>
 
-    <script>
-      const { createApp, ref } = Vue;
+    <script type="module">
+      import { createApp, ref } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 
       createApp({
         setup() {
-          const message = ref("Hello vue!");
+          const count = ref(0);
+
+          const tambah = () => {
+            count.value++;
+          };
+
+          const kurang = () => {
+            count.value--;
+          };
+
           return {
-            message,
+            count,
+            tambah,
+            kurang,
           };
         },
       }).mount("#app");
