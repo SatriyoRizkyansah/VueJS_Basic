@@ -10,6 +10,10 @@
       <button @click="kurang()">-</button>
       {{ count }}
       <button @click="tambah()">+</button>
+
+      <div v-text="message"></div>
+      <div v-text="message2">halo test</div>
+      <div v-html="message3">halo test</div>
     </div>
 
     <script type="module">
@@ -26,11 +30,13 @@
           const kurang = () => {
             count.value--;
           };
-
           return {
             count,
             tambah,
             kurang,
+            message: ref("Hello World"),
+            message2: ref("Hello World 2"),
+            message3: "<strong>Hello World 3</strong>",
           };
         },
       }).mount("#app");
