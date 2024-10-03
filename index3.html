@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(i, index) in fruits">{{ i }} {{ index }} <button @click="hapus(index)">x</button></li>
+      </ul>
+
+      <ul>
+        <li v-for="(i, index) in footballPlaters">{{ i.name }} {{ i.position }} {{ index }}</li>
+      </ul>
+    </div>
+
+    <script type="module">
+      import { createApp, ref } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+
+      createApp({
+        setup() {
+          const fruits = ref(["apple", "manggo", "watermelon"]);
+          const hapus = (index) => {
+            fruits.value.splice(index, 1);
+          };
+          const footballPlaters = ref([
+            {
+              name: "messi",
+              position: "forward",
+            },
+            {
+              name: "ronaldo",
+              position: "forward",
+            },
+          ]);
+          return {
+            hapus,
+            fruits,
+            footballPlaters,
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
